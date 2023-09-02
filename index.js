@@ -3,6 +3,11 @@ let secondCard = 9
 let hasBlackJack = false
 let isAlive = true
 let message = ""
+let messageEl = document.getElementById("message-el")
+function startGame() {
+  console.log("clicked")
+  isItBlackjack(20, 2)  
+}
 
 function isItBlackjack(firstCard, secondCard) {
   total = firstCard + secondCard
@@ -19,17 +24,18 @@ function isItBlackjack(firstCard, secondCard) {
     message = "You're out of the game!"
     isAlive = false
   }
-  console.log(message)
+
+  messageEl.textContent = message
 }
 
+// not sure if this will end up being used...
 function nextStep(hasBlackJack) {
   if (hasBlackJack == true) {
     console.log("Money, Money, Money!")
   }
-  else if(hasBlackJack == false && isAlive == false) {
+  else if (hasBlackJack == false && isAlive == false) {
     console.log("YOU!\n   GET!!\n      NOTHING!!!\n\n (But you can play again if you like...\n    How about it?)")
   }
 }
 
-isItBlackjack(18, 2)
-nextStep(hasBlackJack)
+console.log(messageEl)

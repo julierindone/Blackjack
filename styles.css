@@ -1,33 +1,51 @@
 body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-image: url('images/table.png');
+  background-size: cover;
   margin: 0;
   font-size: 20px;
-}
-
-div.background {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  color: white;
+  font-weight: bold;
 }
 
 h1 {
   color: goldenrod;
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 0;
 }
 
 h2 {
-  color: #fff;
-  font-size: 2.5rem;
-  font-style: oblique;
-  margin-top: 3rem;
+  font-size: 2rem;
+  margin-top: 2rem;
   margin-bottom: 0;
 }
 
 h3 {
-  color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 2rem;
-
   margin-bottom: 0;
 }
+
+#message-el {
+  font-style: oblique;
+  color: rgb(196, 240, 196)
+}
+
+button {
+  color: #016f32;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: goldenrod;
+  width: 150px;
+  border: none;
+  border-radius: 2px;
+  padding: 6px;
+  margin-top: 1.5rem;
+}
+
+  /* div.background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } */
