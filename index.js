@@ -1,18 +1,33 @@
-let firstCard = 6
-let secondCard = 9
+let firstCard = 0
+let secondCard = 0
+let newestCard = 0
+
+let cards = ""
+let cardsEl = document.getElementById("cards-el")
+
+let total = 0
+let totalEl = document.getElementById("total-el")
+
 let hasBlackJack = false
 let isAlive = true
+
 let message = ""
 let messageEl = document.getElementById("message-el")
+
+
 function startGame() {
-  console.log("clicked")
-  isItBlackjack(20, 2)  
+  renderGame(11, 4)
 }
 
-function isItBlackjack(firstCard, secondCard) {
+function renderGame(firstCard, secondCard) {
+  cardsEl.textContent = `Cards: ${firstCard} ${secondCard}`
   total = firstCard + secondCard
-  console.log(`You've got ${total}...`)
+  totalEl.innerText = `${total}`
 
+  score()
+}
+
+function score() {
   if (total <= 20) {
     message = "Do you want to draw another card?"
   }
@@ -24,18 +39,23 @@ function isItBlackjack(firstCard, secondCard) {
     message = "You're out of the game!"
     isAlive = false
   }
-
   messageEl.textContent = message
 }
 
-// not sure if this will end up being used...
-function nextStep(hasBlackJack) {
-  if (hasBlackJack == true) {
-    console.log("Money, Money, Money!")
+function newCard(newestCard) {
+  newestCard = 3 // temp value
+
+  if (isAlive == true && hasBlackJack == false) {
+    
+    total += newestCard
+    totalEl.textContent = total
+    cardsEl.textContent += ` ${newestCard}`
+    
+    score()
   }
-  else if (hasBlackJack == false && isAlive == false) {
-    console.log("YOU!\n   GET!!\n      NOTHING!!!\n\n (But you can play again if you like...\n    How about it?)")
+  else {
+    messageEl.textContent = "Click START to play again."
+    isAlive = true
+    hasBlackJack = false
   }
 }
-
-console.log(messageEl)
