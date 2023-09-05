@@ -23,7 +23,7 @@ function startGame() {
 }
 
 function renderGame(cards) {
-  cardString = `Cards:`
+  cardString = ""
 
   for (let count = 0; count < cards.length; count += 1) {
     cardString += ` ${cards[count]} `
