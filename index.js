@@ -1,12 +1,12 @@
 //BLACKJACK - MY VERSION
 
-let firstCard = 5
-let secondCard = 10
+let firstCard = getRandomCard()
+let secondCard = getRandomCard()
 
 let cards = [firstCard, secondCard]
 let cardsEl = document.getElementById("cards-el")
 
-let total = 0
+let total = firstCard + secondCard
 let totalEl = document.getElementById("total-el")
 
 let message = ""
@@ -15,22 +15,44 @@ let messageEl = document.getElementById("message-el")
 let hasBlackJack = false
 let isAlive = true
 
-function startGame() {
-  total = 0
-  totalEl.textContent = total
-  renderGame(cards)
-  score()
+function getRandomCard() {
+  // this is adjusting the face cards to be worth 10 points. 
+  // However, it's also printing 10 when it should probably be printing "jack" "queen" or "king".
+  // Also, the Ace-worth-1-or-10 thing isn't happening yet.
+  let cardNumber = Math.floor(Math.random() * 13) + 1
+  let pointValue = 0
+
+  console.log(`rCV is ${cardNumber}`)
+
+  switch (cardNumber) {
+    case 11:
+    case 12:
+    case 13:
+      pointValue = 10
+      break;
+
+    default:
+      pointValue = cardNumber
+  }
+  console.log(`this card is worth ${pointValue} points`)
+  return pointValue
 }
 
-function renderGame(cards) {
+function startGame() {
+  // totalEl.textContent = total
+  renderGame()
+}
+
+function renderGame() {
   cardString = ""
 
   for (let count = 0; count < cards.length; count += 1) {
     cardString += ` ${cards[count]} `
-    total += cards[count]
   }
   cardsEl.textContent = cardString
   totalEl.innerText = total
+
+  score()
 }
 
 function score() {
@@ -49,16 +71,18 @@ function score() {
 }
 
 function newCard() {
-  if (isAlive === false) {
+  if (isAlive === false || hasBlackJack === true) {
     messageEl.textContent = "Click START to play again."
   }
 
   else {
-    let card = 6
-    cards.push(card)
+    let card = getRandomCard()
     total += card
-
-    totalEl.textContent = total
+    cards.push(card)
+    console.log(`Total: ${total}`)
+    console.log(`new card value: ${card}`)
+    console.log(`cards: ${cards}`)
+    renderGame()
 
     score()
   }
