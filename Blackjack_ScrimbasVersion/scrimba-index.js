@@ -1,16 +1,25 @@
 // BLACKJACK - SCRIMBA VERSION
-// At this commit, this file matches the code at the end of lesson 33: Use a loop to render cards.
+// This commit covers changes in lesson 34: Use a loop to render cards to 
+let firstCard = getRandomCard()
+let secondCard = getRandomCard()
 
-let firstCard = 10
-let secondCard = 4
 let cards = [firstCard, secondCard]
+let cardsEl = document.getElementById("cards-el")
+
 let total = firstCard + secondCard
-let hasBlackJack = false
-let isAlive = true
+let totalEl = document.getElementById("total-el")
+
 let message = ""
 let messageEl = document.getElementById("message-el")
-let totalEl = document.getElementById("total-el")
-let cardsEl = document.getElementById("cards-el")
+
+let hasBlackJack = false
+let isAlive = true
+
+function getRandomCard() {
+  let randomCard = Math.floor((Math.random() * 12)) + 1
+  console.log(randomCard)
+  return randomCard
+}
 
 function startGame() {
     renderGame()
@@ -35,9 +44,8 @@ function renderGame() {
     messageEl.textContent = message
 }
 
-
 function newCard() {
-    let card = 6
+    let card = getRandomCard()
     total += card
     cards.push(card)
     console.log(cards)
