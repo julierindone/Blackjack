@@ -12,11 +12,11 @@ let messageEl = document.getElementById("message-el")
 let hasBlackJack = false
 let isAlive = false
 
-let player = {
-  name: "Julie",
-  chips: 500,
-}
-let playerEl = document.getElementById("player-el")
+// let player = {
+//   name: "Julie",
+//   chips: 500,
+// }
+// let playerEl = document.getElementById("player-el")
 
 function getRandomCard() {
   // this is adjusting the face cards to be worth 10 points. 
