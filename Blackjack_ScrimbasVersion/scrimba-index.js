@@ -12,9 +12,14 @@ let messageEl = document.getElementById("message-el")
 let hasBlackJack = false
 let isAlive = false
 
+let player = {
+  name: "Julie",
+  chips: 500,
+}
+let playerEl = document.getElementById("player-el")
+
 function getRandomCard() {
-  // let randomCard = Math.floor((Math.random() * 12)) + 1
-  let randomCard = 1
+  let randomCard = Math.floor((Math.random() * 12)) + 1
   console.log(`card drawn is ${randomCard}`)
 
   if (randomCard === 1) {
@@ -32,12 +37,12 @@ function getRandomCard() {
 function startGame() {
   let firstCard = getRandomCard()
   let secondCard = getRandomCard()
-
-  cards = [firstCard, secondCard]
   total = firstCard + secondCard
-
+  cards = [firstCard, secondCard]
   isAlive = true
-  
+
+  playerEl.textContent = `${player.name}: $${player.chips}`
+
   renderGame()
 }
 
@@ -50,7 +55,9 @@ function renderGame() {
   totalEl.textContent = "Total: " + total
   if (total <= 20) {
     message = "Do you want to draw a new card?"
-  } else if (total === 21) {
+    isAlive = true
+  } 
+  else if (total === 21) {
     message = "You've got Blackjack!"
     hasBlackJack = true
   } else {
@@ -61,9 +68,21 @@ function renderGame() {
 }
 
 function newCard() {
-  let card = getRandomCard()
-  total += card
-  cards.push(card)
-  console.log(cards)
-  renderGame()
+  if (isAlive === false || hasBlackJack === true) {
+    messageEl.textContent = "Click START to play again."
+    total = 0
+    totalEl.textContent = total
+  }
+
+  else {
+    let card = getRandomCard()
+    total += card
+    cards.push(card)
+    
+        console.log(`Total: ${total}`)
+    console.log(`new card value: ${card}`)
+    console.log(`cards: ${cards}`)
+
+    renderGame()
+  }
 }

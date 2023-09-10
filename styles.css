@@ -11,19 +11,19 @@ body {
 
 h1 {
   color: goldenrod;
-  font-size: 3rem;
+  font-size: 2.6rem;
   margin-bottom: 0;
 }
 
 h2 {
-  font-size: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 0;
+  font-size: 1.6rem;
+  margin-top: 0rem;
+  margin-bottom: 1.2rem;
 }
 
 h3 {
-  font-size: 1.5rem;
-  margin-top: 1rem;
+  font-size: 1.1rem;
+  margin-top: .5rem;
   margin-bottom: 0;
 }
 
@@ -45,6 +45,7 @@ button {
 
 .btn-wrapper {
   margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 /* div.background {
