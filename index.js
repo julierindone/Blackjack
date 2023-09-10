@@ -1,30 +1,29 @@
 //BLACKJACK - MY VERSION
 
-let firstCard = getRandomCard()
-let secondCard = getRandomCard()
-
-let cards = [firstCard, secondCard]
+let cards = []
 let cardsEl = document.getElementById("cards-el")
 
-let total = firstCard + secondCard
+let total = 0
 let totalEl = document.getElementById("total-el")
 
 let message = ""
 let messageEl = document.getElementById("message-el")
 
 let hasBlackJack = false
-let isAlive = true
+let isAlive = false
 
 function getRandomCard() {
   // this is adjusting the face cards to be worth 10 points. 
   // However, it's also printing 10 when it should probably be printing "jack" "queen" or "king".
-  // Also, the Ace-worth-1-or-10 thing isn't happening yet.
+  // Also, the Ace-worth-1-or-10 thing is being simplified to 11, so that's not being done now.
   let cardNumber = Math.floor(Math.random() * 13) + 1
   let pointValue = 0
 
-  console.log(`rCV is ${cardNumber}`)
-
+  // console.log(`rCV is ${cardNumber}`)
   switch (cardNumber) {
+    case 1:
+      pointValue = 11
+      break;
     case 11:
     case 12:
     case 13:
@@ -39,7 +38,14 @@ function getRandomCard() {
 }
 
 function startGame() {
-  // totalEl.textContent = total
+  let firstCard = getRandomCard()
+  let secondCard = getRandomCard()
+
+  total = firstCard + secondCard
+  cards = [firstCard, secondCard]
+
+  isAlive = true
+
   renderGame()
 }
 
