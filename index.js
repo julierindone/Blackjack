@@ -49,7 +49,7 @@ function startGame() {
   cards = [firstCard, secondCard]
   isAlive = true
 
-  playerEl.textContent = `${player.name}: $${player.chips}`
+  // playerEl.textContent = `${player.name}: $${player.chips}`
 
   renderGame()
 }
