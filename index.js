@@ -45,12 +45,11 @@ function startGame() {
   let firstCard = getRandomCard()
   let secondCard = getRandomCard()
   total = firstCard + secondCard
-  console.log(`firstcard + secondcard is total ${total}`)
   cards = [firstCard, secondCard]
   isAlive = true
+  hasBlackJack = false
 
   // playerEl.textContent = `${player.name}: $${player.chips}`
-
   renderGame()
 }
 
@@ -67,20 +66,16 @@ function renderGame() {
 }
 
 function score() {
-  console.log(`${total} when starting score function`)
   if (total <= 20) {
-    console.log("another card - under 21")
     message = "Do you want to draw another card?"
     isAlive = true
-
   }
   else if (total == 21) {
-    console.log("blackjack: 21")
     message = "You've got Blackjack!"
     hasBlackJack = true
+    isAlive = false
   }
   else {
-    console.log("over 21")
     message = "You're out of the game!"
     isAlive = false
   }
@@ -88,7 +83,6 @@ function score() {
 }
 
 function newCard() {
-  console.log(`is alive? ${isAlive}`)
   if (isAlive === false || hasBlackJack === true) {
     messageEl.textContent = "Click START to play again."
     total = 0
